@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/@uirouter/angularjs/release/angular-ui-router.js"></script>
+    <script src="node_modules/lodash/lodash.js"></script>
+    <script src="node_modules/restangular/src/restangular.js"></script>
+    <script src="node_modules/angular-cookies/angular-cookies.js"></script>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <script src="app.js"></script>
+    <script src="appConfig.js"></script>
+    <script src="controllers/registerCtrl.js"></script>
+    <script src="services/registerService.js"></script>
+    <script src="controllers/loginCtrl.js"></script>
+    <script src="services/loginServices.js"></script>
+    <script src="controllers/articleCtrl.js"></script>
+
+
+    <title>Document</title>
+</head>
+
+<body ng-app="myApp">
+
+    <a ui-sref="register">Register</a>
+    <a ui-sref="login">Login</a>
+
+    <div ui-view></div>
+    
+</body>
+</html>

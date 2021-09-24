@@ -1,0 +1,47 @@
+
+<form class="registration-form" name="registrationForm">
+    <div class="container">
+        <h3>Registration Form</h3>
+        <hr>
+        <!-- username -->
+        <div class="register-field">
+            <label for="username">Username : </label><br>
+            <input type="text" placeholder="Enter Username" name="username" ng-model='username' ng-required='true'>
+            <p ng-show='registrationForm.username.$touched && registrationForm.username.$invalid'>
+                Please Enter a valid Username
+            </p>
+        </div>
+        <br><br>
+        
+        <!-- email -->
+        <div class="register-field">
+            <label for="email">Email : </label><br>
+            <input type="email" placeholder="Enter Email" name="email" ng-model='email' ng-required='true'> 
+            <p ng-show='registrationForm.email.$touched && registrationForm.email.$invalid'>Please Enter a valid Email</p>
+        </div>
+        <br><br>
+
+        <!-- password -->
+        <div class="register-field">
+            <label for="password">Password : </label><br>
+            <input type="password" placeholder="Enter Password" name="password" ng-model='password' ng-required='true'>
+            <p ng-show='registrationForm.pswd.$touched && registrationForm.pswd.$invalid'>Please Enter a valid Password</p>
+        </div>
+        <br><br>
+
+        <!-- password2 -->
+        <div class="register-field"></div>
+            <label for="pswd2">Re-enter Password : </label><br>
+            <input type="password" placeholder="Re-enter Password" name="pswd2" ng-model='pswd2' ng-required='true'>
+            <p ng-show='(registrationForm.pswd2.$touched && password != pswd2)'>Passwords don't match</p>
+        </div>
+        <br><br>
+
+        <div class="clearfix">
+            <input type="submit" value="Register" class="register-btn" ng-click='registerData(username, email, password)' 
+            ng-disabled="registrationForm.$invalid || dataLoading || password != pswd2">
+        </div>
+        <p>Output Message : {{message}}</p>
+        <p>StatusCode: {{statuscode}}</p>
+    </div>
+</form> 
