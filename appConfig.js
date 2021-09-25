@@ -22,9 +22,31 @@ app.config([
             templateUrl: 'templates/articles.html',
             controller: 'articleCtrl'
         }
+        let createArticleState = {
+            name: 'createArticle',
+            url: '/articles/create',
+            templateUrl: 'templates/createArticle.html',
+            controller: 'createArticleCtrl'
+        }
+        let articleDetailState = {
+            name: 'articleDetail',
+            url: '/articles/:slug',
+            templateUrl: 'templates/articleDetail.html',
+            controller: 'articleDetailCtrl'
+        }
+        let profileState = {
+            name: 'profile',
+            url: '/profile',
+            templateUrl: 'templates/profile.html',
+            controller: 'profileCtrl'
+        }
+
         $stateProvider.state(registerState);
         $stateProvider.state(loginState);
         $stateProvider.state(articleState);
+        $stateProvider.state(createArticleState);
+        $stateProvider.state(articleDetailState);
+        $stateProvider.state(profileState);
 
         RestangularProvider.setBaseUrl('https://conduit.productionready.io/api');
     }

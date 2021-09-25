@@ -12,19 +12,22 @@ app.controller('regCtrl', [
                 email: email,
                 password: password
             }
+            $scope.dataLoading = true;
             console.log(JSON.stringify(user));
             userRegister.regUser(user)
             .then(function(response) {
+                $scope.dataLoading = false;
                 console.log(response)
                 $cookies.put('token', response.user.token);
                 $cookies.put('user', response.user.username);
                 $cookies.put('email', response.user.email);
                 $state.go('articles');
             }, function(response){
+                $scope.dataLoading = false;
                 console.log(response)
                 $scope.message = JSON.stringify(response.data.errors);
                 $scope.statuscode = response.status;
             })
         };
     }
-])
+]);
