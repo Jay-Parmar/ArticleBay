@@ -19,7 +19,7 @@
         <br><br>
 
         <div class="clearfix">
-            <input type="submit" value="Login" class="login-btn" ng-disabled='loginForm.$invalid' 
+            <input type="submit" value="Login" class="login-btn" ng-disabled='loginForm.$invalid || dataLoading' 
                 ng-click='loginUser(email, password)'>
         </div>
 
