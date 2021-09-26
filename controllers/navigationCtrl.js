@@ -6,30 +6,30 @@ app.controller('navigationCtrl',[
             $cookies.remove('user');
             $cookies.remove('email');
             $state.go('login');
-        }
+        };
 
-        $scope.toArticles=function(){
+        $scope.toArticles = function(){
             $state.go("articles");
-        }
+        };
 
-        $scope.back=function(){
+        $scope.back = function(){
             $window.history.back();
-        }
+        };
 
-        $scope.createArticle=function(){
+        $scope.createArticle = function(){
             $state.go("createArticle");
-        }
+        };
 
-        $scope.profile=function(){
+        $scope.profile = function(){
             $state.go("profile");
-        }
+        };
 
-        $scope.register=function(){
+        $scope.register = function(){
             $state.go("register");
-        }
+        };
 
-        $scope.login=function(){
+        $scope.login = function(){
             $state.go("login");
-        }
+        };
     }
 ]);

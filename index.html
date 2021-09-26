@@ -16,9 +16,8 @@
     <script src="appConfig.js"></script>
     <script src="controllers/navigationCtrl.js"></script>
     <script src="controllers/registerCtrl.js"></script>
-    <script src="services/registerService.js"></script>
     <script src="controllers/loginCtrl.js"></script>
-    <script src="services/loginServices.js"></script>
+    <script src="services/loginRegisterServices.js"></script>
     <script src="controllers/articleCtrl.js"></script>
     <script src="services/articleService.js"></script>
     <script src="controllers/createArticleCtrl.js"></script>
@@ -34,7 +33,7 @@
 <body ng-app="myApp">
 
     <ul class="navbar" ng-controller="navigationCtrl">
-        <li><a ng-click="back()" >Back</a></li>
+        <li><a ng-click="back()">Back</a></li>
         <li><a ng-click="register()" >Register</a></li>
         <li><a ng-click="toArticles()">Home</a></li>
         <li><a ng-click="createArticle()">Create Article</a></li>

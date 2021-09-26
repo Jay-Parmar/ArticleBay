@@ -6,10 +6,10 @@ app.service('profileService', [
 
         this.checkPass = function(data) {
             return Restangular.all('/users/login').post({user:data});
-        }
+        };
 
         this.updateUser = function(data) {
             return Restangular.all('/user').customPUT({user:data});
-        }
+        };
     }
 ]);

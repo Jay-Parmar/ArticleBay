@@ -1,6 +1,6 @@
 app.controller('loginCtrl', [
-    '$scope', '$state', '$cookies', 'userLogin', 
-    function($scope, $state, $cookies, userLogin){
+    '$scope', '$state', '$cookies', 'loginRegisterService', 
+    function($scope, $state, $cookies, lrs){
     
         if($cookies.get('token')){
             $state.go('articles');
@@ -11,11 +11,9 @@ app.controller('loginCtrl', [
                 email: email,
                 password: password
             }
-            console.log(JSON.stringify(user));
             $scope.dataLoading = true;
-            userLogin.loginUser(user)
+            lrs.loginUser(user)
             .then(function(response){
-                console.log(response)
                 $scope.dataLoading = false;
                 $cookies.put('token', response.user.token);
                 $cookies.put('user', response.user.username);
