@@ -1,6 +1,6 @@
 app.controller('articleCtrl', [
-    '$scope', '$cookies', '$rootScope', '$state', 'articleService',
-    function($scope, $cookies, $rootScope, $state, articleService){
+    '$scope', '$cookies', '$state', 'articleService',
+    function($scope, $cookies, $state, articleService){
 
         if (!$cookies.get('token')) {
             $state.go('login');
@@ -12,14 +12,13 @@ app.controller('articleCtrl', [
 
         articleService.getArticles()
         .then(function(response){
-            console.log("getArticle Executed!");
-            console.log(response);
 
             let articleList = response.articles;
             
             articleList.forEach(parseData);
             function parseData(item){
                 $scope.articles.push({
+                    slug: item.slug,
                     title: item.title,
                     body: item.body,
                     description: item.description,
@@ -27,12 +26,11 @@ app.controller('articleCtrl', [
                     tagList: item.tagList 
                 })
             }
-
-        }, function(response){
-            console.log("Error received");
-            console.log(response);
-
         })
+
+        $scope.goToArticle = function(slug){
+            $state.go('articleDetail', {slug:slug})
+        };
 
         $scope.logout = function(){
             $cookies.remove('token');
@@ -43,14 +41,13 @@ app.controller('articleCtrl', [
 
         $scope.numberOfPages = function(){
             return Math.ceil($scope.articles.length/$scope.pageSize);
-        }
+        };
 
         $scope.create = function(){
             $state.go('createArticle');
-        }
-
+        };
     }
-])
+]);
 
 app.filter('startFrom', function () {
     return function (input, start) {

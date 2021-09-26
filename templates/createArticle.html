@@ -20,5 +20,5 @@
         <label for="tags">Tags : (Separated by comma ',' with no spaces)</label>
         <input type="text" name="tags" ng-model="tags" placeholder="Enter tags" /><br>           
     </div>
-    <button ng-disabled="articleForm.title.$invalid || articleForm.description.$invalid || articleForm.body.$invalid" ng-click="create()">Create Article</button>
+    <button ng-disabled="articleForm.$invalid" ng-click="create()">Create Article</button>
 </form>

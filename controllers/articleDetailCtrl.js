@@ -10,7 +10,7 @@ app.controller('articleDetailCtrl', [
             $scope.body = response.article.body;
             $scope.tags = response.article.tagList;
         }, function(response){
-            console.log(response)
+            alert("Article not Found!");
         });
 
         $scope.delete = function () {
@@ -20,9 +20,8 @@ app.controller('articleDetailCtrl', [
                         $state.go('articles');
                     }
                 );
-            }
-            else {
-                console.log("Not a valid user");
+            }else{
+                alert("You have to be the author in order to delete an article.");
             }            
         }
     }
