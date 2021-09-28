@@ -28,21 +28,5 @@
     </div>
     <br><br>
 
-    <!-- password -->
-    <div class="profile-field">
-        <label for="password">New Password : (*Input the last password if this has to be unchanged)</label><br>
-        <input type="password" placeholder="Enter Password" name="password" ng-model='password' ng-required='true'>
-        <p ng-show='profileForm.pswd.$touched && profileForm.pswd.$invalid'>Please Enter a valid Password</p>
-    </div>
-    <br><br>
-
-    <!-- password2 -->
-    <div class="profile-field"></div>
-        <label for="pswd2">Re-enter New Password : </label><br>
-        <input type="password" placeholder="Re-enter Password" name="pswd2" ng-model='pswd2' ng-required='true'>
-        <p ng-show='(profileForm.pswd2.$touched && password != pswd2)'>Passwords don't match</p>
-    </div>
-    <br><br>
-
-    <button type="submit" ng-disabled="profileForm.$invalid || password != pswd2" ng-click="update()">Save changes</button>
+    <button type="submit" ng-disabled="profileForm.$invalid" ng-click="update()">Save changes</button>
 </form>

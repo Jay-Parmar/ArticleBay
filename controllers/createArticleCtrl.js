@@ -1,7 +1,7 @@
 app.controller('createArticleCtrl', [
-    '$scope', '$cookies', '$state', 'createArticleService',
+    '$scope', '$cookies', '$state', 'articleService',
 
-    function($scope, $cookies, $state, createArticleService){
+    function($scope, $cookies, $state, articleService){
 
         if(!$cookies.get('token')) {
             $state.go('login');
@@ -15,7 +15,7 @@ app.controller('createArticleCtrl', [
                 tagList: $scope.tags!=undefined && (($scope.tags.length>1)? $scope.tags.split(",") : "")
             }
 
-            createArticleService.createArticle(data)
+            articleService.createArticle(data)
             .then(function (response) {
                 $state.go('articleDetail', {slug: response.article.slug});
             }, function(response){

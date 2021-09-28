@@ -19,11 +19,9 @@
     <script src="controllers/loginCtrl.js"></script>
     <script src="services/loginRegisterServices.js"></script>
     <script src="controllers/articleCtrl.js"></script>
-    <script src="services/articleService.js"></script>
+    <script src="services/articleServices.js"></script>
     <script src="controllers/createArticleCtrl.js"></script>
-    <script src="services/createArticleService.js"></script>
     <script src="controllers/articleDetailCtrl.js"></script>
-    <script src="services/articleDetailService.js"></script>
     <script src="controllers/profileCtrl.js"></script>
     <script src="services/profileService.js"></script>
 
@@ -34,7 +32,8 @@
 
     <ul class="navbar" ng-controller="navigationCtrl">
         <li><a ng-click="back()">Back</a></li>
-        <li><a ng-click="register()" >Register</a></li>
+        <li><a ng-click="register()">Register</a></li>
+        <li><a ng-click="login()">Login</a></li>
         <li><a ng-click="toArticles()">Home</a></li>
         <li><a ng-click="createArticle()">Create Article</a></li>
         <li><a ng-click="profile()">Profile</a></li>

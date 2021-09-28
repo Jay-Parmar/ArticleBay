@@ -41,7 +41,9 @@
             <input type="submit" value="Register" class="register-btn" ng-click='registerData(username, email, password)' 
             ng-disabled="registrationForm.$invalid || dataLoading || password != pswd2">
         </div>
-        <p>Output Message : {{message}}</p>
-        <p>StatusCode: {{statuscode}}</p>
+        <div ng-show="hasError">
+            <p>Output Message : {{message}}</p>
+            <p>StatusCode: {{statuscode}}</p>
+        </div>
     </div>
 </form>

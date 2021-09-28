@@ -1,8 +1,8 @@
 app.controller('articleDetailCtrl', [
-    '$scope', '$cookies', '$state', 'articleDetailService',
-    function ($scope, $cookies, $state, articleDetailService){
+    '$scope', '$cookies', '$state', 'articleService',
+    function ($scope, $cookies, $state, articleService){
 
-        articleDetailService.getArticle($state.params.slug)
+        articleService.getArticle($state.params.slug)
         .then(function (response) {
             $scope.name = response.article.author.username;
             $scope.title = response.article.title;
@@ -15,7 +15,7 @@ app.controller('articleDetailCtrl', [
 
         $scope.delete = function () {
             if($scope.name === $cookies.get('user')) {
-                articleDetailService.delArticle($state.params.slug).then(
+                articleService.delArticle($state.params.slug).then(
                     function(response) {
                         $state.go('articles');
                     }

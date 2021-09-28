@@ -16,21 +16,20 @@ app.controller('profileCtrl', [
                 email: $cookies.get('email'),
                 password: $scope.currPassword
             }).then(function(response){
+                $cookies.put('token', response.user.token);
+                $cookies.put('user', response.user.username);
+                $cookies.put('email', response.user.email);
                 profileService.updateUser({
                     username: $scope.username,
                     email: $scope.email,
                     password: $scope.password
                 }).then(function(response){
-                    alert("Profile updated!");
                     $cookies.put('token', response.user.token);
                     $cookies.put('user', response.user.username);
                     $cookies.put('email', response.user.email);
-                }, function(response) {
-                    console.log(response);
-                    if(response.data.errors.username[0] === "has already been taken")  
-                        alert("Username is already taken!");
-                    else if(response.data.errors.email[0] === "has already been taken")
-                        alert("Email is already taken!");
+                    alert("Profile updated!");
+                }, function(response){
+                    alert(JSON.stringify(response.data.errors));
                 });
             }, function(error) {
                 alert("Invalid credentials.");

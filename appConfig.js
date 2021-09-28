@@ -48,6 +48,6 @@ app.config([
         $stateProvider.state(articleDetailState);
         $stateProvider.state(profileState);
 
-        RestangularProvider.setBaseUrl('https://conduit.productionready.io/api');
+        RestangularProvider.setBaseUrl('http://127.0.0.1:8000/api/');
     }
 ]);

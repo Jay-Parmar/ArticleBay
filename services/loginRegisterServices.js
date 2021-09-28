@@ -6,7 +6,7 @@ app.service('loginRegisterService', [
         }
 
         this.regUser = function(data){
-            return Restangular.all('users').post({user:data})
+            return Restangular.all('/users/').post({user:data})
         }
     }
 ])

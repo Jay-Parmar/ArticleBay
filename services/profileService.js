@@ -9,7 +9,7 @@ app.service('profileService', [
         };
 
         this.updateUser = function(data) {
-            return Restangular.all('/user').customPUT({user:data});
+            return Restangular.all('user').customPUT({user:data});
         };
     }
 ]);

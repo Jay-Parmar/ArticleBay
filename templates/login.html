@@ -22,8 +22,9 @@
             <input type="submit" value="Login" class="login-btn" ng-disabled='loginForm.$invalid || dataLoading' 
                 ng-click='loginUser(email, password)'>
         </div>
-
-        <p>Output Message : {{message}}</p>
-        <p>StatusCode: {{statuscode}}</p>
+        <div ng-show="hasError">
+            <p>Output Message : {{message}}</p>
+            <p>StatusCode: {{statuscode}}</p>
+        </div>
     </div>
 </form>
