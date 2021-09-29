@@ -13,7 +13,7 @@
     </div>
     <div class="article-field">
         <label for="body">Body : </label>
-        <input type="text" name="body" ng-model="body" placeholder="Enter body" ng-required='true' /><br>
+        <textarea name="body" ng-model="body" placeholder="Enter body" ng-required='true'></textarea><br>
         <p ng-show="articleForm.body.$touched && articleForm.body.$invalid">Body is required!</p>         
     </div>
     <div class="article-field">

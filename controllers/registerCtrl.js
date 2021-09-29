@@ -1,32 +1,30 @@
 app.controller('regCtrl', [
-    '$scope', '$state', '$cookies', 'loginRegisterService', 
-    function($scope, $state, $cookies, lrs){
+    '$scope', '$state', 'loginRegisterService', 'cookieService', 
+    function($scope, $state, loginRegisterService, cookieService){
 
-        if($cookies.get('token')){
-            $state.go('articles');
-        }
+        $scope.user = {};
+        $scope.usernameTaken = false;
+        $scope.emailTaken = false;
 
-        $scope.hasError = false;
-
-        $scope.registerData = function(username, email, password){
-            user = {
-                username: username,
-                email: email,
-                password: password
-            }
+        $scope.registerData = function(){
             $scope.dataLoading = true;
-            lrs.regUser(user)
+            loginRegisterService.registerUser($scope.user)
             .then(function(response) {
-                $scope.hasError = false;
                 $scope.dataLoading = false;
-                $cookies.put('token', response.user.token);
-                $cookies.put('user', response.user.username);
-                $cookies.put('email', response.user.email);
+                $scope.dataLoading = false;
+                $scope.usernameTaken = false;
+                cookieService.putCookies(response);
                 $state.go('articles');
             }, function(response){
-                $scope.hasError = true;
                 $scope.dataLoading = false;
-                $scope.message = JSON.stringify(response.data.errors);
+                $scope.usernameTaken = false;
+                $scope.emailTaken = false;
+                if((response.data.errors.username != undefined) && response.data.errors.username[0] === "user with this username already exists.") {
+                    $scope.usernameTaken = true;
+                }
+                if((response.data.errors.email != undefined) && response.data.errors.email[0] === "user with this email already exists.") {
+                    $scope.emailTaken = true;
+                }
                 $scope.statuscode = response.status;
             })
         };

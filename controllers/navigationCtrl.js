@@ -1,10 +1,15 @@
 app.controller('navigationCtrl',[
-    '$scope', '$state', '$cookies', '$window', 
-    function($scope, $state, $cookies, $window){
+    '$scope', '$state', '$cookies', '$rootScope', '$window', 'cookieService', 
+    function($scope, $state, $cookies, $rootScope, $window, cookieService){
+        
+        if($cookies.get('token')) {
+            $rootScope.isAuth = true;
+        }else{
+            $rootScope.isAuth = false;
+        }
+        
         $scope.logout = function(){
-            $cookies.remove('token');
-            $cookies.remove('user');
-            $cookies.remove('email');
+            cookieService.removeCookies();
             $state.go('login');
         };
 

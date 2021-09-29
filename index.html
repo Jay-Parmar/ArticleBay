@@ -13,7 +13,8 @@
     
     <link rel="stylesheet" href="css/style.css">
     <script src="app.js"></script>
-    <script src="appConfig.js"></script>
+    <script src="app.config.js"></script>
+    <script src="app.run.js"></script>
     <script src="controllers/navigationCtrl.js"></script>
     <script src="controllers/registerCtrl.js"></script>
     <script src="controllers/loginCtrl.js"></script>
@@ -24,6 +25,7 @@
     <script src="controllers/articleDetailCtrl.js"></script>
     <script src="controllers/profileCtrl.js"></script>
     <script src="services/profileService.js"></script>
+    <script src="services/cookieService.js"></script>
 
     <title>Document</title>
 </head>
@@ -32,12 +34,12 @@
 
     <ul class="navbar" ng-controller="navigationCtrl">
         <li><a ng-click="back()">Back</a></li>
-        <li><a ng-click="register()">Register</a></li>
-        <li><a ng-click="login()">Login</a></li>
-        <li><a ng-click="toArticles()">Home</a></li>
-        <li><a ng-click="createArticle()">Create Article</a></li>
-        <li><a ng-click="profile()">Profile</a></li>
-        <li><a ng-click="logout()">Logout</a></li>
+        <li ng-hide="isAuth"><a ng-click="register()">Register</a></li>
+        <li ng-hide="isAuth"><a ng-click="login()">Login</a></li>
+        <li ng-show="isAuth"><a ng-click="toArticles()">Home</a></li>
+        <li ng-show="isAuth"><a ng-click="createArticle()">Create Article</a></li>
+        <li ng-show="isAuth"><a ng-click="profile()">Profile</a></li>
+        <li ng-show="isAuth"><a ng-click="logout()">Logout</a></li>
     </ul>
 
     <div ui-view></div>

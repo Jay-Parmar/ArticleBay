@@ -1,11 +1,7 @@
 app.controller('profileCtrl', [
-    '$scope', '$state', '$cookies', 'profileService',
+    '$scope', '$cookies', 'profileService', 'cookieService', 
     
-    function ($scope, $state, $cookies, profileService){
-
-        if(!$cookies.get('token')) {
-            $state.go('login');
-        }
+    function ($scope, $cookies, profileService, cookieService){
 
         $scope.email = $cookies.get('email');
         $scope.username = $cookies.get('user');
@@ -16,17 +12,13 @@ app.controller('profileCtrl', [
                 email: $cookies.get('email'),
                 password: $scope.currPassword
             }).then(function(response){
-                $cookies.put('token', response.user.token);
-                $cookies.put('user', response.user.username);
-                $cookies.put('email', response.user.email);
+                cookieService.putCookies(response);
                 profileService.updateUser({
                     username: $scope.username,
                     email: $scope.email,
                     password: $scope.password
                 }).then(function(response){
-                    $cookies.put('token', response.user.token);
-                    $cookies.put('user', response.user.username);
-                    $cookies.put('email', response.user.email);
+                    cookieService.putCookies(response);
                     alert("Profile updated!");
                 }, function(response){
                     alert(JSON.stringify(response.data.errors));

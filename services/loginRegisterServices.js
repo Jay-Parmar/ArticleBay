@@ -3,10 +3,10 @@ app.service('loginRegisterService', [
     function(Restangular){
         this.loginUser = function(data){
             return Restangular.all('/users/login').post({user:data})
-        }
+        };
 
-        this.regUser = function(data){
+        this.registerUser = function(data){
             return Restangular.all('/users/').post({user:data})
-        }
+        };
     }
-])
+]);

@@ -1,10 +1,6 @@
 app.controller('loginCtrl', [
-    '$scope', '$state', '$cookies', 'loginRegisterService', 
-    function($scope, $state, $cookies, lrs){
-    
-        if($cookies.get('token')){
-            $state.go('articles');
-        }
+    '$scope', '$state', 'loginRegisterService', 'cookieService', 
+    function($scope, $state, loginRegisterService, cookieService){
 
         $scope.hasError = false;
 
@@ -14,13 +10,11 @@ app.controller('loginCtrl', [
                 password: password
             }
             $scope.dataLoading = true;
-            lrs.loginUser(user)
+            loginRegisterService.loginUser(user)
             .then(function(response){
                 $scope.dataLoading = false;
                 $scope.hasError = false;
-                $cookies.put('token', response.user.token);
-                $cookies.put('user', response.user.username);
-                $cookies.put('email', response.user.email);
+                cookieService.putCookies(response);
                 $state.go('articles');
             }, function(response){
                 $scope.hasError = true;

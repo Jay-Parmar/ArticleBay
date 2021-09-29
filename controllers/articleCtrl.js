@@ -1,33 +1,28 @@
 app.controller('articleCtrl', [
-    '$scope', '$cookies', '$state', 'articleService',
-    function($scope, $cookies, $state, articleService){
+    '$scope', '$state', 'articleService',
+    function($scope, $state, articleService){
 
-        if (!$cookies.get('token')) {
-            $state.go('login');
-        }else{
+        $scope.currentPage = 1;
+        $scope.pageSize = 5;
+        $scope.articles = [];
 
-            $scope.currentPage = 1;
-            $scope.pageSize = 5;
-            $scope.articles = [];
+        articleService.getArticles()
+        .then(function(response){
 
-            articleService.getArticles()
-            .then(function(response){
-
-                let articleList = response.articles;
-                
-                articleList.forEach(parseData);
-                function parseData(item){
-                    $scope.articles.push({
-                        slug: item.slug,
-                        title: item.title,
-                        body: item.body,
-                        description: item.description,
-                        author: item.author.username,
-                        tagList: item.tagList 
-                    })
-                }
-            })
-        }
+            let articleList = response.articles;
+            
+            articleList.forEach(parseData);
+            function parseData(item){
+                $scope.articles.push({
+                    slug: item.slug,
+                    title: item.title,
+                    body: item.body,
+                    description: item.description,
+                    author: item.author.username,
+                    tagList: item.tagList 
+                })
+            }
+        })
 
         $scope.goToArticle = function(slug){
             $state.go('articleDetail', {slug:slug})

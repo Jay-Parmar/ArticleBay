@@ -1,11 +1,7 @@
 app.controller('createArticleCtrl', [
-    '$scope', '$cookies', '$state', 'articleService',
+    '$scope', '$state', 'articleService',
 
-    function($scope, $cookies, $state, articleService){
-
-        if(!$cookies.get('token')) {
-            $state.go('login');
-        }
+    function($scope, $state, articleService){
 
         $scope.create = function() {
             data = {
