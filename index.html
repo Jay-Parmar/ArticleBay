@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/@uirouter/angularjs/release/angular-ui-router.js"></script>
+    <script src="node_modules/lodash/lodash.js"></script>
+    <script src="node_modules/restangular/src/restangular.js"></script>
+    <script src="node_modules/angular-cookies/angular-cookies.js"></script>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <script src="app.js"></script>
+    <script src="app.config.js"></script>
+    <script src="app.run.js"></script>
+    <script src="controllers/navigationCtrl.js"></script>
+    <script src="controllers/registerCtrl.js"></script>
+    <script src="controllers/loginCtrl.js"></script>
+    <script src="services/loginRegisterServices.js"></script>
+    <script src="controllers/articleCtrl.js"></script>
+    <script src="services/articleServices.js"></script>
+    <script src="controllers/createArticleCtrl.js"></script>
+    <script src="controllers/articleDetailCtrl.js"></script>
+    <script src="controllers/profileCtrl.js"></script>
+    <script src="services/profileService.js"></script>
+    <script src="services/cookieService.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body ng-app="myApp">
+
+    <ul class="navbar" ng-controller="navigationCtrl">
+        <li><a ng-click="back()">Back</a></li>
+        <li ng-hide="isAuth"><a ng-click="register()">Register</a></li>
+        <li ng-hide="isAuth"><a ng-click="login()">Login</a></li>
+        <li ng-show="isAuth"><a ng-click="toArticles()">Home</a></li>
+        <li ng-show="isAuth"><a ng-click="createArticle()">Create Article</a></li>
+        <li ng-show="isAuth"><a ng-click="profile()">Profile</a></li>
+        <li ng-show="isAuth"><a ng-click="logout()">Logout</a></li>
+    </ul>
+
+    <div ui-view></div>
+    
+</body>
+</html>

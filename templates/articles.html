@@ -1,0 +1,40 @@
+<div>
+    <h1>Hello from Article Page!</h1>
+
+    <div class="create-article-button">
+        <button ng-click="create()">Create Article</button>
+    </div>
+
+    <div class="filter-objects">
+        <h3>Filter Articles : </h3>
+        <label for="author">Author : </label>
+        <input type="text" name="author" ng-model="author" placeholder="Author Name">
+        <label for="title">Title : </label>
+        <input type="text" name="title" ng-model="title" placeholder="Title">
+    </div>
+
+    <div class="article-container">
+        <div class="article-item" ng-show="articles.length == 0">
+            No elements to display.
+        </div>
+        <div class="article-item" ng-repeat="article in articles 
+        | filter : {title : title || undefined, author : author || undefined}
+        | startFrom: (currentPage-1)*pageSize | limitTo: pageSize" 
+        ng-click="goToArticle(article.slug)">
+            <h3>Title : {{article.title}}</h3>
+            <h4>Description : {{article.description}}</h4>
+            <p>Body : {{article.body}}</p>
+            <p>Author : {{article.author}}</p>
+            <p>Tags : {{article.tagList}}</p>
+        </div>
+    </div>
+    <div class="pagination-buttons">
+        <button ng-disabled="currentPage == 1" ng-click="currentPage=currentPage-1">
+            Previous
+        </button> 
+        {{currentPage}}/{{numberOfPages()}}
+        <button ng-disabled="currentPage >= articles.length/pageSize" ng-click="currentPage=currentPage+1">
+            Next
+        </button>
+    </div>
+</div>
