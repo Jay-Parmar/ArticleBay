@@ -1,0 +1,32 @@
+<form name="profileForm" class="profile-form" novalidate>
+    <h1>Profile</h1>
+    <h2>Enter the details</h2>
+
+    <!-- username -->
+    <div class="profile-field">
+        <label for="username">Username : </label><br>
+        <input type="text" placeholder="Enter Username" name="username" ng-model='username' ng-required='true' value="username">
+        <p ng-show='profileForm.username.$touched && profileForm.username.$invalid'>
+            Please Enter a valid Username
+        </p>
+    </div>
+    <br><br>
+
+    <!-- email -->
+    <div class="profile-field">
+        <label for="email">Email : </label><br>
+        <input type="email" placeholder="Enter Email" name="email" ng-model='email' ng-required='true' value="email"> 
+        <p ng-show='profileForm.email.$touched && profileForm.email.$invalid'>Please Enter a valid Email</p>
+    </div>
+    <br><br>
+
+    <!-- current password -->
+    <div class="profile-field">
+        <label for="currParrword">Current Password : </label><br>
+        <input type="password" name="currPassword" ng-model="currPassword" placeholder="Enter current password" ng-required='true'>
+        <p ng-show='profileForm.currParrword.$touched && profileForm.currParrword.$invalid'>Current Password is required!</p>
+    </div>
+    <br><br>
+
+    <button type="submit" ng-disabled="profileForm.$invalid" ng-click="update()">Save changes</button>
+</form>

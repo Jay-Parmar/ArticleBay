@@ -1,0 +1,30 @@
+<form class="login-form" name="loginForm">
+    <div class="container">
+        <h3>Login Form</h3>
+        <hr>
+        <!-- email -->
+        <div class="register-field">
+            <label for="email">Email : </label><br>
+            <input type="email" placeholder="Enter Email" name="email" ng-model='email' ng-required='true'> 
+            <p ng-show='loginForm.email.$touched && loginForm.email.$invalid'>Please Enter a valid Email</p>
+        </div>
+        <br><br>
+
+        <!-- password -->
+        <div class="register-field">
+            <label for="password">Password : </label><br>
+            <input type="password" placeholder="Enter Password" name="password" ng-model='password' ng-required='true'>
+            <p ng-show='loginForm.password.$touched && loginForm.password.$invalid'>Please Enter a valid Password</p>
+        </div>
+        <br><br>
+
+        <div class="clearfix">
+            <input type="submit" value="Login" class="login-btn" ng-disabled='loginForm.$invalid || dataLoading' 
+                ng-click='loginUser(email, password)'>
+        </div>
+        <div ng-show="hasError">
+            <p>Output Message : {{message}}</p>
+            <p>StatusCode: {{statuscode}}</p>
+        </div>
+    </div>
+</form>
